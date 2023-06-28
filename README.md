@@ -15,3 +15,10 @@
 \*Na pasta API está o conjunto de rotas para lidar com requisições HTTP relacionadas a uma lista de tarefas (todo list). As rotas permitem realizar as seguintes operações: recuperar todas as tarefas, adicionar uma nova tarefa, excluir uma tarefa existente e atualizar uma tarefa existente. Também foi utilizado middlewares de validação para garantir a integridade dos dados recebidos nas requisições.
 
 \*Utilizado tipagens e interfaces corretas, regras eslint e prettier.
+
+Deploy feito na vercel:
+corelab-web-challenge-desafio-corenotes.vercel.app
+corelab-web-challenge-desafio-coren-git-808839-luisgustavofaria.vercel.app
+corelab-web-challenge-desafio-corenotes-eibdnvklq.vercel.app
+
+## Obrigado!
