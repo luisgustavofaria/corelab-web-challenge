@@ -30,32 +30,20 @@ export default function Home() {
   const [allNotesLoaded, setAllNotesLoaded] = useState(false);
 
   useEffect(() => {
-    getTodo();
+    fetchNotes(); // Renomear a função para fetchNotes
   }, []);
 
-  async function getTodo() {
-    const response = await axios.get('/api/todo');
-    setNotes(response.data);
-  }
-
-  const fetchMoreNotes = async () => {
-    if (isLoading || allNotesLoaded) {
-      return;
-    }
-
+  const fetchNotes = async () => {
     setIsLoading(true);
-    const newPage = page + 1;
-    const newPerPage = perPage;
-    const url = `/api/todo?page=${newPage}&perPage=${newPerPage}`;
+    const url = `/api/todo?page=${page}&perPage=${perPage}`; // Usar os valores atuais de page e perPage
     const response = await axios.get(url);
-    const moreNotes = response.data;
+    const fetchedNotes = response.data;
 
-    if (moreNotes.length === 0) {
+    if (fetchedNotes.length === 0) {
       setAllNotesLoaded(true);
     } else {
-      setPage(newPage);
-      setPerPage(newPerPage);
-      setNotes((prevNotes) => [...prevNotes, ...moreNotes]);
+      setNotes((prevNotes) => [...prevNotes, ...fetchedNotes]); // Adicionar as notas carregadas às notas existentes
+      setPage((prevPage) => prevPage + 1); // Incrementar a página para carregar mais notas na próxima chamada
     }
 
     setIsLoading(false);
